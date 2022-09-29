@@ -3,23 +3,17 @@ import React from "react";
 
 const NavBar = () => {
   return (
-    <div className="relative bg-white mx-auto max-w-7xl px-4 sm:px-6">
-      <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-        <div className="flex justify-start lg:w-0 lg:flex-1">
-          <Link
-            href="/"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-          >
-            거래소
-          </Link>
-          <Link
-            href="/test"
-            className="text-base font-medium text-gray-500 hover:text-gray-900"
-          >
-            투자내역
-          </Link>
+    <header className="relative bg-white w-screen px-96">
+      <div className="flex items-center justify-between py-5">
+        <div className="flex justify-start">
+          <div className="text-base font-medium pr-4">
+            <Link href="/">거래소</Link>
+          </div>
+          <div className="text-base font-medium">
+            <Link href="/test">투자내역</Link>
+          </div>
         </div>
-        <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+        <div className="hidden items-center justify-end">
           <a
             href="#"
             className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
@@ -34,7 +28,7 @@ const NavBar = () => {
           </a>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
