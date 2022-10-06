@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCoinList, setSearchList, updateTickerList } from "../store/store";
+import { setCoinList, setFocusCoin, updateTickerList } from "../store/store";
 import { v4 } from "uuid";
 import axios from "axios";
-import Link from "next/link";
 import SearchBar from "./SearchBar";
 
 const Ticker = () => {
@@ -12,6 +11,7 @@ const Ticker = () => {
   const coinList = useSelector((state) => state.coinList);
   const tickerList = useSelector((state) => state.tickerList);
   const searchList = useSelector((state) => state.searchList);
+  const focusCoin = useSelector((state) => state.focusCoin);
 
   // 코인 리스트 axois로 가져오기
   const getCoinList = async () => {
@@ -52,6 +52,9 @@ const Ticker = () => {
       const data = JSON.parse(encoder.decode(rawData));
       dispatch(updateTickerList(data));
     };
+    return () => {
+      ws.close();
+    };
   }, [coinList]);
 
   return (
@@ -66,10 +69,16 @@ const Ticker = () => {
       <div className="overflow-y-auto scrollbar text-xs h-[45rem]">
         {searchList?.value?.map((coin) => {
           const change = tickerList?.value?.[coin.market]?.change;
+
           return (
             <div
               key={coin.market}
-              className="flex justify-around items-center h-11 border-b-2 hover:bg-gray-200"
+              className={`flex justify-around items-center h-11 border-b-2 hover:bg-gray-200 ${
+                focusCoin === coin.market ? "bg-gray-200" : null
+              }`}
+              onClick={() => {
+                dispatch(setFocusCoin(coin.market));
+              }}
             >
               <span className="basis-1/3">
                 <div className="font-bold">{coin.korean_name}</div>

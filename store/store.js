@@ -57,14 +57,26 @@ const tickerList = createSlice({
   },
 });
 
+const focusCoin = createSlice({
+  name: "focusCoin",
+  initialState: "KRW-BTC",
+  reducers: {
+    setFocusCoin(state, action) {
+      return action.payload;
+    },
+  },
+});
+
 export const { setCoinList } = coinList.actions;
 export const { setSearchList } = searchList.actions;
 export const { updateTickerList } = tickerList.actions;
+export const { setFocusCoin } = focusCoin.actions;
 
 export default configureStore({
   reducer: {
     coinList: coinList.reducer,
     searchList: searchList.reducer,
     tickerList: tickerList.reducer,
+    focusCoin: focusCoin.reducer,
   },
 });
