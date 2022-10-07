@@ -89,8 +89,8 @@ const Ticker = () => {
                   change === "EVEN"
                     ? ""
                     : change === "RISE"
-                    ? "text-blue-600"
-                    : "text-red-600"
+                    ? "text-red-600"
+                    : "text-blue-600"
                 }`}
               >
                 {tickerList?.value?.[coin.market]?.trade_price.toLocaleString()}
@@ -100,8 +100,8 @@ const Ticker = () => {
                   change === "EVEN"
                     ? ""
                     : change === "RISE"
-                    ? "text-blue-600"
-                    : "text-red-600"
+                    ? "text-red-600"
+                    : "text-blue-600"
                 }`}
               >
                 <div>

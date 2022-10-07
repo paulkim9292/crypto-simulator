@@ -13,7 +13,7 @@ const Orderbook = () => {
 
   // Websocket 열고 실시간 데이터 받아오기
   useEffect(() => {
-    if (!coinList) return;
+    if (!coinList || !focusCoin) return;
     const ws = new WebSocket("wss://api.upbit.com/websocket/v1");
     ws.binaryType = "arraybuffer";
     ws.onopen = (event) => {
